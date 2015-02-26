@@ -7,6 +7,9 @@
 	<name>Xtend Utility Code</name>
 	<description>Contains Active Annotations and other Xtend specific utility code.</description>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<dependencies>
 
@@ -22,7 +25,7 @@
 			<version>1.16.2</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.badlogicgames.gdx</groupId>
 			<artifactId>gdx</artifactId>
@@ -30,33 +33,65 @@
 		</dependency>
 
 	</dependencies>
-	
+
 	<build>
-		<resources>
-	        <resource>
-	            <directory>src/main/xtend</directory>
-	        </resource>
-	    </resources>
-	    
-	    <plugins>
-	    	<plugin>
-			  <groupId>org.eclipse.xtend</groupId>
-			  <artifactId>xtend-maven-plugin</artifactId>
-			  <version>2.7.3</version>
-			  <executions>
-			    <execution>
-			      <goals>
-			        <goal>compile</goal>
-			        <goal>testCompile</goal>
-			      </goals>
-			      <configuration>
-			        <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
-			        <testOutputDirectory>${project.build.directory}/xtend-gen/test</testOutputDirectory>
-			      </configuration>
-			    </execution>
-			  </executions>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>2.7.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
+							<testOutputDirectory>${project.build.directory}/xtend-gen/test</testOutputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
-	    </plugins>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.7,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
