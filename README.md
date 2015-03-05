@@ -22,3 +22,23 @@ def static character(Entity target, int health, int momentum) {
 		]
 }
 ```
+
+Example use case:
+
+```xtend
+@EntityDSLFactory(DefenceComponent)
+class EntityDSL {}
+
+// Then in a different class:
+
+import static extension ... .EntityDSL.*
+
+class EntityFactory{
+	def static character(Entity target) {
+		target => [
+			// Assuming DefenceComponent has a constructor accepting 2 ints
+			defence(0, 10)
+		]
+	}
+}
+```
