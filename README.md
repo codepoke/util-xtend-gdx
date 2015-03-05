@@ -42,3 +42,16 @@ class EntityFactory{
 	}
 }
 ```
+
+The ActiveAnnotations goes through all constructors in a component and creates a static method according to the following template:
+
+```xtend
+/**
+ * Where <name> is the lowercased, and "Component" stripped .toSimpleName() of the argument Component class.
+ */
+def <name>(Entity e, <args constructor>){
+  val comp = new <ComponentClass>(<args constructor)
+  e.addComponent(comp)
+  return comp
+}
+```
