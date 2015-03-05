@@ -4,11 +4,11 @@ Active Annotations which can be used for LibGDX &amp; Artemis
 
 # EntityDSLFactory
 
-Accepts an array of Components, and populates the annotated class with static extensions methods which construct the component and add it to a given entity.
-
+Accepts an array of Components, and populates the annotated class with static extensions methods which construct the component and add it to a given entity. A method is generated for each constructor of a given Component.
 
 This in turn allows syntax like:
 
+```xtend
 def static character(Entity target, int health, int momentum) {
 		target => [
 			defence(0, 10)
@@ -21,3 +21,4 @@ def static character(Entity target, int health, int momentum) {
 			]
 		]
 }
+```
