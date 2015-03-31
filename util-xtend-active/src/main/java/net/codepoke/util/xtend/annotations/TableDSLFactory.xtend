@@ -1,12 +1,11 @@
 package net.codepoke.util.xtend.annotations
 
-import java.lang.annotation.Repeatable
-import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
+import com.badlogic.gdx.scenes.scene2d.ui.Table
+import net.codepoke.util.xtend.processor.TableDSLProcessor
 import org.eclipse.xtend.lib.macro.Active
 
-@Repeatable(ExtensionDSLFactories)
-@Active(ExtensionDSLProcessor)
-annotation ExtensionDSLFactory {
+@Active(TableDSLProcessor)
+annotation TableDSLFactory {
 
 	/**
 	 * The classes we should target for extension method writing
@@ -14,19 +13,9 @@ annotation ExtensionDSLFactory {
 	Class[] value;
 
 	/**
-	 * The classes we should create unwrapped constructor calls for
-	 */
-	Class[] unwrapped = #[];
-
-	/**
 	 * The different names which be removed from the name 
 	 */
 	String[] excludeList = #[];
-
-	/**
-	 * The extension target we want to create methods for.
-	 */
-	Class[] extensionTargets;
 
 	/**
 	 * <p>The code that needs to be executed for the created instance.</p>
@@ -35,9 +24,5 @@ annotation ExtensionDSLFactory {
 	 * @see {@link EntityFactoryProcessor#createConstructorDelegate}
 	 */
 	String extensionCode = "";
-
-}
-
-annotation ExtensionDSLFactories {
-	ExtensionDSLFactory[] value;
+	
 }

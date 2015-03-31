@@ -1,24 +1,26 @@
-package net.codepoke.util.xtend.annotations.processors
+package net.codepoke.util.xtend.processor
 
+import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
 import net.codepoke.util.xtend.util.FactoryUtils
 import org.eclipse.xtend.lib.macro.AbstractClassProcessor
+import org.eclipse.xtend.lib.macro.Active
 import org.eclipse.xtend.lib.macro.TransformationContext
 import org.eclipse.xtend.lib.macro.declaration.MutableClassDeclaration
 import org.eclipse.xtend.lib.macro.declaration.ResolvedConstructor
 import org.eclipse.xtend.lib.macro.declaration.ResolvedParameter
 import org.eclipse.xtend.lib.macro.declaration.TypeReference
 import org.eclipse.xtend.lib.macro.declaration.Visibility
-import org.eclipse.xtend.lib.macro.Active
 
-class ExtensionDSLProcessor extends AbstractClassProcessor {
+import static net.codepoke.util.xtend.processors.ExtensionDSLProcessor.*
+import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.badlogic.gdx.scenes.scene2d.ui.Cell
 
-	public static val EXTENSION_TARGET = "target"
-	public static val DELEGATION_INSTANCE = "param"
+class TableDSLProcessor extends AbstractClassProcessor {
 
 	override doTransform(MutableClassDeclaration factory, extension TransformationContext context) {
 
 		val activeAnnotation = Active.findTypeGlobally
-		val factoryType = newTypeReference(ExtensionDSLProcessor)
+		val factoryType = newTypeReference(TableDSLProcessor)
 
 		// Find the annotation which has the the EntityFactoryProcessor as its value
 		val facAnn = factory.annotations.filter [ annotation |
@@ -29,10 +31,10 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 		].head
 
 		if (facAnn == null)
-			throw new RuntimeException("Couldn't find an annotation which ")
+			throw new RuntimeException("Couldn't find an Active Annotation which uses TableDSLProcessor")
 
-		val extensionTargets = facAnn.getClassArrayValue("extensionTargets")
-		val unwrappedTypes = facAnn.getClassArrayValue("unwrapped")
+		val extensionTargets = #[Table.newTypeReference]
+		val unwrappedTypes = #[]
 		val exclusionList = facAnn.getStringArrayValue("excludeList")
 		val extensionTargetCode = facAnn.getStringValue("extensionCode")
 
@@ -64,12 +66,12 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 
 						// For each matching unwrapped type, create a delegation call to its constructor (if it isn't a copy constructor, nor empty)
 						// Either we are a perfect match, or we are a generics discarded match
-						unwrappedTypes.filter[
+						unwrappedTypes.filter [
 							it == targetType || targetType?.type?.newTypeReference?.equals(it)
 						].forEach [
 							targetType.declaredResolvedConstructors.filter [
-								declaration.visibility == Visibility.PUBLIC && 
-								resolvedParameters.head?.resolvedType != targetType && resolvedParameters.size > 0
+								declaration.visibility == Visibility.PUBLIC &&
+									resolvedParameters.head?.resolvedType != targetType && resolvedParameters.size > 0
 							].forEach [
 								createConstructorDelegate(context, factory, finalName, extensionTargetCode,
 									componentType, extensionTarget, resolvedParameters, it)
@@ -86,6 +88,7 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 		}
 
 	}
+
 
 	/**
 	 * <p>
@@ -112,7 +115,7 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 		Iterable<? extends ResolvedParameter> params, ResolvedConstructor wrappedConstructor) {
 
 		factory.addMethod(methodName) [
-			returnType = componentType
+			returnType = Cell.newTypeReference(componentType)
 			visibility = Visibility.PUBLIC
 			static = true;
 
@@ -153,7 +156,7 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 				'''	
 					«componentType» «DELEGATION_INSTANCE» = new «componentType»(«parameters»);
 					«extensionTargetCode»
-					return «DELEGATION_INSTANCE»;
+					return «EXTENSION_TARGET».add(«DELEGATION_INSTANCE»);
 				'''
 			]
 		]
