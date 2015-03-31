@@ -3,7 +3,7 @@ package net.codepoke.util.xtend.annotations
 import com.artemis.Entity
 import net.codepoke.lib.util.artemis.systems.rpg.Value
 import net.codepoke.lib.util.libgdx.AssetReference
-import net.codepoke.util.xtend.annotations.processors.ExtensionDSLProcessor
+import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
 import org.eclipse.xtend.lib.macro.Active
 
 @Active(ExtensionDSLProcessor)
