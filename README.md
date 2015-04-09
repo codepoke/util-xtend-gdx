@@ -5,7 +5,10 @@ General Xtend code which can be used for LibGDX &amp; Artemis, such as Active An
 
 ## ExtensionDSLFactory
 
-An Active Annotation which creates extension methods that unwrap and delegate the constructors of the targetted value, apply it on given code, and then returns the created instance.
+An Active Annotation which creates extension methods that unwrap and delegate the constructors of the targetted value, apply the created instance on given code, and then return it.
+
+In summary, with a single annotation you can generate DSL instead of having to handroll your own.
+This annotation generates the mundane parts of DSLs which normally need to be handwritten and are 80% of the DSL, such as [Kotlin's Anko](https://github.com/JetBrains/anko).
 
 The ExtensionDSLFactory accepts the following values:
 
@@ -13,7 +16,7 @@ The ExtensionDSLFactory accepts the following values:
 * Class[] extensionTargets; the target classes for which the extension methods should be created.
 * Class[] unwrapped; the types for which single parameter constructors exist in the targets which we want to unwrap.
 * String[] excludeList; the parts of the name in the type which should be removed from the method name.
-* String extensionCode; the code which should be executed after the instance is created, and the instance is returned.
+* String extensionCode; the code which should be executed after the instance is created, and before the instance is returned.
 
 ### What?!
 
