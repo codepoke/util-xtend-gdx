@@ -4,7 +4,7 @@ import java.lang.annotation.Repeatable
 import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
 import org.eclipse.xtend.lib.macro.Active
 
-@Repeatable(ExtensionDSLFactories)
+//@Repeatable(ExtensionDSLFactories)	TODO: Find fix for < java 8
 @Active(ExtensionDSLProcessor)
 annotation ExtensionDSLFactory {
 

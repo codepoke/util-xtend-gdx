@@ -8,7 +8,7 @@ import org.eclipse.xtext.xbase.lib.Inline;
 public class ArrayLiterals {
 
 	@Inline("new double[$1][$2]")
-	public static double[][] double2DimArray(int outerSize, int innerSize) {
+	public static double[][] newDoubleArray(int outerSize, int innerSize) {
 		throw new UnsupportedOperationException();
 	}
 
