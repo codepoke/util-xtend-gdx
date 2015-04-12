@@ -54,7 +54,7 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 				val finalName = temporaryName
 
 				// Create the extension methods for all public accessible constructors
-				componentType.declaredResolvedConstructors.filter[declaration.visibility == Visibility.PUBLIC].forEach [ constructor |
+				componentType.declaredResolvedConstructors.filter[declaration.visibility == Visibility.PUBLIC].forEach [ constructor, idx |
 
 					val params = constructor.resolvedParameters
 
@@ -66,13 +66,13 @@ class ExtensionDSLProcessor extends AbstractClassProcessor {
 						// Either we are a perfect match, or we are a generics discarded match
 						unwrappedTypes.filter[
 							it == targetType || targetType?.type?.newTypeReference?.equals(it)
-						].forEach [
+						].forEach [ extension loc, idxI2 |
 							targetType.declaredResolvedConstructors.filter [
 								declaration.visibility == Visibility.PUBLIC && 
 								resolvedParameters.head?.resolvedType != targetType && resolvedParameters.size > 0
-							].forEach [
+							].forEach [ constr, idxInner |
 								createConstructorDelegate(context, factory, finalName, extensionTargetCode,
-									componentType, extensionTarget, resolvedParameters, it)
+									componentType, extensionTarget, constr.resolvedParameters, constr)
 							]
 						]
 					}
