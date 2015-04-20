@@ -24,7 +24,8 @@ public class ArrayLiterals {
 		for (Integer idx : range) {
 			sub.add(array[idx]);
 		}
+		
 		return sub;
 	}
-
+	
 }

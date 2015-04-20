@@ -1,8 +1,8 @@
 package net.codepoke.util.xtend.annotations
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table
-import net.codepoke.util.xtend.processor.TableDSLProcessor
 import org.eclipse.xtend.lib.macro.Active
+import net.codepoke.util.xtend.processors.TableDSLProcessor
 
 @Active(TableDSLProcessor)
 annotation TableDSLFactory {

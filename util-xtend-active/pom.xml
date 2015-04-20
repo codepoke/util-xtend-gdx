@@ -9,6 +9,12 @@
 	<artifactId>util-xtend-active</artifactId>
 
 	<dependencies>
+		<dependency>
+			  <groupId>org.eclipse.xtend</groupId>
+			  <artifactId>org.eclipse.xtend.core</artifactId>
+			  <version>${xtend.version}</version>
+			  <scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>net.codepoke.util</groupId>

@@ -1,4 +1,4 @@
-package net.codepoke.util.xtend.processor
+package net.codepoke.util.xtend.processors
 
 import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
 import net.codepoke.util.xtend.util.FactoryUtils

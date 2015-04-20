@@ -2,7 +2,7 @@ package test.dsl
 
 import net.codepoke.lib.util.ai.behaviortrees.IBehavior
 
-import static extension net.codepoke.util.dsl.BehaviorDSL.*
+import static extension net.codepoke.util.xtend.dsl.BehaviorDSL.*
 
 class BehaviorDSLTest {
 	

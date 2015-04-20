@@ -1,6 +1,6 @@
 package net.codepoke.util.xtend.annotations
 
-import java.lang.annotation.Repeatable
+//import java.lang.annotation.Repeatable
 import net.codepoke.util.xtend.processors.ExtensionDSLProcessor
 import org.eclipse.xtend.lib.macro.Active
 
