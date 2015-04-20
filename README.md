@@ -44,5 +44,5 @@ or when used to create a DSL for Table and Scene2D:
 
 [Mappers](https://github.com/codepoke/util-xtend-gdx/wiki/Mappers) is an ActiveAnnotion which can be used with the Artemis framework to generate the ComponentMappers for given targets, and create extension methods which allow components to be accessed in a variable-access like syntax.
 
-This allows syntax such as '''xtend entity.health ''' to access the "HealthComponent", as opposed to using a ComponentMapper.get(), or Entity.getComponent(HealthComponent.class)
+This allows syntax such as _entity.health_ to access the "HealthComponent", as opposed to using a _ComponentMapper.get(entity)_, or _entity.getComponent(HealthComponent.class)_
 
