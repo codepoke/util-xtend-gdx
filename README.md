@@ -42,7 +42,7 @@ or when used to create a DSL for Table and Scene2D:
 
 ## Mappers
 
-[Mappers](https://github.com/codepoke/util-xtend-gdx/wiki/Mappers) is an ActiveAnnotion which can be used with the Artemis framework to generate the ComponentMappers for given targets, and create extension methods which allow components to be accessed in a variable-access like syntax.
+[Mappers](https://github.com/codepoke/util-xtend-gdx/wiki/Mappers) is an ActiveAnnotation which can be used with the Artemis framework to generate the ComponentMappers for given targets, and create extension methods which allow components to be accessed in a variable-access like syntax.
 
 ```xtend
 // Given an Entity entity, and a Component type HealthComponent; this allows syntax such as:
