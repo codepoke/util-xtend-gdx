@@ -101,11 +101,9 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>compile</goal>
+                            <goal>compile</goal>					
+                            <goal>testCompile</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

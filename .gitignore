@@ -2,3 +2,5 @@
 /target/
 /.classpath
 *.project
+**/xtend-gen/
+**/generated-sources/

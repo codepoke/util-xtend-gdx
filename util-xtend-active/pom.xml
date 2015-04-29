@@ -49,13 +49,13 @@
 		<dependency>
 			<groupId>net.codepoke.util</groupId>
 			<artifactId>util-artemis</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.2-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.codepoke.util</groupId>
 			<artifactId>util-libgdx</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.1-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>
